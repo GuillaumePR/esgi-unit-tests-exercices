@@ -1,19 +1,20 @@
 async function getFilms() {
-    let response = await fetch("https://swapi.py4e.com/api/people/1");
-    let luke = await response.json();
+    const response = await fetch("https://swapi.py4e.com/api/people/1");
+    const luke = await response.json();
     return luke.films;
 }
 
 async function getFilmTitle(url) {
-    let response = await fetch(url).json()
-    return response.title;
+    const response = await fetch(url);
+    const movieObject = await response.json();
+    return movieObject.title;
 }
 
 export async function getLukesFilms() {
-    let movieURLList = await getFilms();
+    const movieURLList = await getFilms();
     let movieList = [];
-    for(movie in movieURLList) {
-        let film = await getFilmTitle(movie);
+    for(const movie of movieURLList) {
+        const film = await getFilmTitle(movie);
         movieList.push(film);
     }
     return movieList;

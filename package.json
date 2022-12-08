@@ -6,6 +6,7 @@
     "jest": "^29.3.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "debug": "node --debug-brk --inspect ./node_modules/.bin/jest -i"
   }
 }
