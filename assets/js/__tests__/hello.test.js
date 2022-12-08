@@ -2,21 +2,81 @@ import {sayHello} from "../hello.js";
 //const sayHello = require("./hello.js");
 
 test('valid string should return hello + string', () => {
-  expect(sayHello("Manu")).toBe("Hello Manu");
+  // arrange
+  const stringToBeTested = "Manu";
+  const expectedResult = "Hello Manu";
+
+  // act
+  const callResult = sayHello(stringToBeTested);
+
+  // assert
+  expect(callResult).toBe(expectedResult);
 });
 
 test('string as length of 0', () => {
-  expect(() => sayHello(new String)).toThrow("Name must have max 30 characters and min 1 character.");
+  // arrange
+  const stringToBeTested = new String;
+  const expectedResult = "Name must have max 30 characters and min 1 character.";
+  let error;
+
+  // act
+  try {
+    sayHello(stringToBeTested);
+  } catch (err) {
+    error = err;
+  }
+
+  // assert
+  expect(error).toBe(expectedResult);
 });
 
 test('string as length more than 30', () => {
-  expect(() => sayHello("This string is longer than 30 characters")).toThrow("Name must have max 30 characters and min 1 character.");
+    // arrange
+    const stringToBeTested = "This string is longer than 30 characters";
+    const expectedResult = "Name must have max 30 characters and min 1 character.";
+    let error;
+  
+    // act
+    try {
+      sayHello(stringToBeTested);
+    } catch (err) {
+      error = err;
+    }
+  
+    // assert
+    expect(error).toBe(expectedResult);
 });
 
 test('value not string but integer', () => {
-  expect(() => sayHello(666)).toThrow("Parameter name is not an instance of String.");
+  // arrange
+  const valueToBeTested = 666;
+  const expectedResult = "Parameter name must be an instance of String.";
+  let error;
+
+  // act
+  try {
+    sayHello(valueToBeTested);
+  } catch (err) {
+    error = err;
+  }
+
+  // assert
+  expect(error).toBe(expectedResult);
 });
 
-test('value not string but class', () => {
-  expect(() => sayHello(String.class)).toThrow("Parameter name is not an instance of String.");
+test('value not string but object', () => {
+  // arrange
+  const valueToBeTested = String.class;
+  const expectedResult = "Parameter name must be an instance of String.";
+  let error;
+
+  // act
+  try {
+    sayHello(valueToBeTested);
+  } catch (err) {
+    error = err;
+  }
+
+  // assert
+  expect(error).toBe(expectedResult);
 });

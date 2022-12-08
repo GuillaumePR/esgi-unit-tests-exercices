@@ -5,5 +5,5 @@ export function sayHello (name) {
         else
             return "Hello " + name;
     } else
-        throw "Parameter name is not an instance of String.";
+        throw "Parameter name must be an instance of String.";
 };

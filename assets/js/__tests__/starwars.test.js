@@ -4,6 +4,9 @@ function getFilms() {};
 function getFilmTitle() {};
 
 test('test1', () => {
+  // arrange
+  const expectedResult = ["A New Hope", "The Empire Strikes Back", "Return of the Jedi", "Revenge of the Sith", "The Force Awakens"];
+
   const getFilms = jest.fn(() => "https://swapi.py4e.com/api/films/1/");
   const getFilmTitle = jest.fn(() => "A New Hope");
 
@@ -20,5 +23,9 @@ test('test1', () => {
   .mockImplementationOnce(() => "Revenge of the Sith")
   .mockImplementationOnce(() => "The Force Awakens");
 
-  expect(getLukesFilms()).toBe(["A New Hope", "The Empire Strikes Back", "Return of the Jedi", "Revenge of the Sith", "The Force Awakens"]);
+  // act
+  const callResults = getLukesFilms();
+
+  // assert
+  expect(callResults).toBe(expectedResult);
 });
