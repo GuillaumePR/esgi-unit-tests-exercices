@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 async function getFilms() {
     const response = await fetch("https://swapi.py4e.com/api/people/1");
     const luke = await response.json();
@@ -19,3 +21,5 @@ export async function getLukesFilms() {
     }
     return movieList;
 }
+
+//console.log(await getLukesFilms());

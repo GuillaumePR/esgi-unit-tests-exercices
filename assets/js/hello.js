@@ -7,3 +7,5 @@ export function sayHello (name) {
     } else
         throw "Parameter name must be an instance of String.";
 };
+
+//console.log(sayHello("Manu"));

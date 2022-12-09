@@ -1,5 +1,4 @@
 import {sayHello} from "../hello.js";
-//const sayHello = require("./hello.js");
 
 test('valid string should return hello + string', () => {
   // arrange

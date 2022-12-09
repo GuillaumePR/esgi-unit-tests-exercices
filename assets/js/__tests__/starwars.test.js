@@ -1,4 +1,5 @@
 import {getLukesFilms} from "../starwars.js";
+import {jest} from '@jest/globals'
 
 test('real api values returned working', async () => {
   // arrange
