@@ -1,15 +1,19 @@
 import fetch from 'node-fetch';
 
 async function getFilms() {
-    const response = await fetch("https://swapi.py4e.com/api/people/1");
-    const luke = await response.json();
-    return luke.films;
+    return await fetch("https://swapi.py4e.com/api/people/1").then((response) => {
+        if(response.status <= 199 && response.status >= 300) 
+            throw "Failed to fetch people ressource from SWAPI. Please try again later.";
+        return response.json();
+    }).then((json) => { return json.films; });
 }
 
 async function getFilmTitle(url) {
-    const response = await fetch(url);
-    const movieObject = await response.json();
-    return movieObject.title;
+    return await fetch(url).then((response) => {
+        if(response.status <= 199 && response.status >= 300) 
+            throw "Failed to fetch film ressource from SWAPI. Please try again later.";
+        return response.json();
+    }).then((json) => { return json.title; });
 }
 
 export async function getLukesFilms() {
@@ -22,4 +26,4 @@ export async function getLukesFilms() {
     return movieList;
 }
 
-//console.log(await getLukesFilms());
+console.log(await getLukesFilms());
